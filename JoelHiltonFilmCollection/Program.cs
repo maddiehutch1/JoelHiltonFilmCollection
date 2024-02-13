@@ -1,3 +1,5 @@
+using Mission06_MadHutchings.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

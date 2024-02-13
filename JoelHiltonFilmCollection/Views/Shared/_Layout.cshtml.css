@@ -46,3 +46,7 @@ button.accept-policy {
   white-space: nowrap;
   line-height: 60px;
 }
+
+.bg-salmon {       
+    color: #f8f8f8; /* fix this background color!! */
+}
