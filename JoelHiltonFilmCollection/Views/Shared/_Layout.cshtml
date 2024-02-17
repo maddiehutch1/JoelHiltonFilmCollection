@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿<!--
+    Madison Hutchings - Mission 6 (this was super fun by the way!)
+    
+    This is the main layout html, which holds the main structure of all the views
+-->
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -10,8 +16,8 @@
     <link rel="icon" type="image/x-icon" href="~/movieicon.ico" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-salmon border-bottom box-shadow mb-3">
+    <header class="bg-salmon text-center">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/logo.png" /></a> <!-- make a fancy logo -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -34,18 +40,20 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container text-center">
         <main role="main" class="pb-3">
-            @RenderBody()
+            @RenderBody() <!-- depending on view... the views and its html shows up here -->
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-center text-muted">
         <div class="container">
             &copy; 2024 - The Joel Hilton Film Collection
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script> <!-- fancy jquery that shows error msgs -->
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)

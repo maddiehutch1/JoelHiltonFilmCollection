@@ -1,9 +1,15 @@
+using Microsoft.EntityFrameworkCore;
 using Mission06_MadHutchings.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<MovieEntryContext>(options =>
+{
+    options.UseSqlite(builder.Configuration["ConnectionStrings:MovieConnection"]); // connects to the SQLITE
+});
 
 var app = builder.Build();
 
@@ -24,6 +30,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}"); // the routing and pattern of url
 
 app.Run();
