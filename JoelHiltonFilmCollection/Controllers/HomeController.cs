@@ -53,5 +53,13 @@ namespace JoelHiltonFilmCollection.Controllers // forgive me for changing the na
             return View(response);
         }
 
+        public IActionResult MovieTable()
+        {
+            var movieEntries = _movieEntryContext.Movies
+                .OrderBy(x => x.Title).ToList();
+
+            return View(movieEntries);
+        }
+
     }
 }
