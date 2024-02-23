@@ -12,11 +12,11 @@
             <td>Title</td>
             <td>Year</td>
             <td>Director</td>
-            <td>Only One Director?</td>
             <td>Rating</td>
             <td>Edited</td>
             <td>Lent To</td>
             <td>CopiedToPlex</td>
+            <td>Notes</td>
         </tr>
     </thead>
     <tbody>
@@ -27,10 +27,10 @@
                 <td>@movie.Title</td>
                 <td>@movie.Year</td>
                 <td>@movie.Director</td>
-                <td>@movie.OneDirector</td>
                 <td>@movie.Rating</td>
                 <td>@movie.Edited</td>
                 <td>@movie.LentTo</td>
+                <td>@movie.CopiedToPlex</td>
                 <td>@movie.Notes</td>
 
                 <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@movie.MovieId">Edit</a></td>

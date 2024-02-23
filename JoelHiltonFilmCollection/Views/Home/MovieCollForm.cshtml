@@ -18,18 +18,18 @@
         the massive form that retrieves all users info, verifies to see if they entered the info correctly, and submit button pushes 
         results into sqlite database
     -->
+    <br />
     <form method="post">
+        <input type="hidden" asp-for="MovieId" />
+
         <label asp-for="Category">Category</label><br />
-        <select asp-for="Category" id="category" name="category" required>
-            <option value="Drama">Drama</option>
-            <option value="Television">Television</option>
-            <option value="HorrorSus">Horror/Suspense</option>
-            <option value="Comedy">Comedy</option>
-            <option value="Family">Family</option>
-            <option value="ActionAdv">Action/Adventure</option>
-            <option value="VHS">VHS</option>
-            <option value="Miscellaneous">Miscellaneous</option>
-        </select><br />
+        <select asp-for="CategoryId" >
+            <option value="">Select a Movie Category</option>
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+        </select>
 
         <br /><br />
         <label asp-for="Title">Title</label><br />
@@ -43,14 +43,6 @@
         <br /><br />
         <label asp-for="Director">Director</label><br /> <!-- normalize here using the select option below (one director) -->
         <input asp-for="Director" type="text" title="Please enter only ONE if there is more than one director" required /><br />
-        
-        <br />
-        <label asp-for="OneDirector">Is this the only director?</label><br />
-        <select asp-for="OneDirector" id="OneDirector" name="OneDirector">
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-        </select><br />
-        <span asp-validation-for="OneDirector" class="text-danger"></span>
         
         <br /><br />
         <label asp-for="Rating">Rating</label><br />
@@ -76,9 +68,9 @@
         <span asp-validation-for="LentTo" class="text-danger"></span>
 
         <br /><br />
-        <label asp-for="Notes">Notes</label><br />  <!--Notes should be limited to 25 characters. (#notcoveredinthevideos)-->
-        <input asp-for="Notes" type="text" /><br />
-        <span asp-validation-for="Notes" class="text-danger"></span>
+        <label asp-for="CopiedToPlex">Notes</label><br />  <!--Notes should be limited to 25 characters. (#notcoveredinthevideos)-->
+        <input asp-for="CopiedToPlex" type="text" /><br />
+        <span asp-validation-for="CopiedToPlex" class="text-danger"></span>
 
         <br /><br />
 

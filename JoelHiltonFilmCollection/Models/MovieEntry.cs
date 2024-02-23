@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission06_MadHutchings.Models;
 
@@ -8,21 +9,31 @@ public class MovieEntry
     [Key]
     [Required]
     public int MovieId { get; set; }
-    [Required]
-    public string Category { get; set; }
+
+    [ForeignKey("CategoryId")]
+    public int? CategoryId { get; set; }
+    public Category? Category { get; set; }
+
     [Required]
     public string Title { get; set; }
+
     [Required]
     [Range(1888, 2024)]
     public int Year { get; set; }
+
+    public string? Director { get; set; }
+  
+    public string? Rating { get; set; }
+    
     [Required]
-    public string Director { get; set; }
-    [Required] 
-    public bool OneDirector { get; set; }
-    [Required]
-    public string Rating { get; set; }
-    public bool? Edited { get; set; }
+    public bool Edited { get; set; }
+    
+    [StringLength(25, ErrorMessage = "The LentTo field cannot exceed 25 characters.")]
     public string? LentTo { get; set; }
+
+    [Required]
+    public string CopiedToPlex { get; set; }
+
     [StringLength(25, ErrorMessage = "The Notes field cannot exceed 25 characters.")]
     public string? Notes { get; set; }
 

@@ -27,15 +27,17 @@ namespace JoelHiltonFilmCollection.Controllers // forgive me for changing the na
         [HttpGet]
         public IActionResult MovieCollForm()
         {
-            return View();
+            ViewBag.categories = _movieEntryContext.Categories
+                .OrderBy(c => c.CategoryName).ToList();
+
+            return View(new MovieEntry());
         }
 
         // this is connected to the form being submitted and what takes place
         [HttpPost]
         public IActionResult MovieCollForm(MovieEntry response)
         {
-            // Check if LentTo and Notes fields are null and set them to an empty string if true
-            response.Notes = response.Notes ?? "";
+            // Check if LentTo and CopiedToPlex fields are null and set them to an empty string if true
             response.LentTo = response.LentTo ?? "";
 
             if (ModelState.IsValid)
@@ -46,6 +48,12 @@ namespace JoelHiltonFilmCollection.Controllers // forgive me for changing the na
                 _movieEntryContext.SaveChanges();
 
                 return View("SuccessPage", response);
+            }
+            else // invalid data
+            {
+
+                ViewBag.categories = _movieEntryContext.Categories
+                    .OrderBy(c => c.CategoryName).ToList();
             }
 
             // If ModelState is not valid, it means there are validation errors
@@ -61,5 +69,9 @@ namespace JoelHiltonFilmCollection.Controllers // forgive me for changing the na
             return View(movieEntries);
         }
 
+        // var movieSet = _context.Movies.Include(x => x.Category)
+                            //  .ThenInclude(x => etc) -- adding another table
+
+        // @x.CategoryName
     }
 }
