@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Confirm Deletion";
+}
+@model MovieEntry
+
+<!-- delete page that is returned if user is wanting to delete a record -->
+<div class="align-content-center">
+    <h1>Are you sure you want to delete the following record?</h1>
+
+    <h3>@Model.Title</h3>
+    <h4>@Model.Year, @Model.Director</h4>
+
+    <form method="post">
+        <input type="hidden" asp-for="MovieId" /> <!-- use MovieId to distinguish which record to delete -->
+
+        <button type="submit">DELETE</button>
+        <button><a asp-controller="Home" asp-action="MovieTable">CANCEL</a></button>
+    </form>
+</div>
+    

@@ -8,11 +8,13 @@ namespace Mission06_MadHutchings.Models
         {
 
         }
-
-        public DbSet<MovieEntry> Movies { get; set; } // hey! this is the table in Sqlite! connects our form (cs file) to dataset
+        
+        // hey! this is the table in Sqlite! connects our form (cs file) to dataset
+        public DbSet<MovieEntry> Movies { get; set; } 
 
         public DbSet<Category> Categories { get; set; }
 
+        // create a model for the sub table Category
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>().HasData(
@@ -27,6 +29,9 @@ namespace Mission06_MadHutchings.Models
                 new Category { CategoryId = 8, CategoryName = "VHS" }
             );
 
+
+
         }
+
     }
 }

@@ -4,11 +4,6 @@
     ViewData["Title"] = "Movie Form";
 }
 
-<!-- 
-    use GOOD NORMALIZATION PRINCIPLES, 
-    all records must be entered EXCEPT last 3 in order to create a new record
--->
-
 @model MovieEntry
 <div class="align-content-center">
     <h1>New Film to Collection Form</h1>
@@ -22,6 +17,10 @@
     <form method="post">
         <input type="hidden" asp-for="MovieId" />
 
+        <!--
+            this code uses the Category viewbag that helps connect the main Movies
+            table with the other subtable (category)
+        -->
         <label asp-for="Category">Category</label><br />
         <select asp-for="CategoryId" >
             <option value="">Select a Movie Category</option>
@@ -33,7 +32,7 @@
 
         <br /><br />
         <label asp-for="Title">Title</label><br />
-        <input asp-for="Title" type="text" required /><br />
+        <input asp-for="Title" type="text" title="Please enter a Movie Title" required /><br />
 
         <br /><br />
         <label asp-for="Year">Year</label><br />
@@ -41,12 +40,12 @@
         <span asp-validation-for="Year" class="text-danger"></span>
 
         <br /><br />
-        <label asp-for="Director">Director</label><br /> <!-- normalize here using the select option below (one director) -->
-        <input asp-for="Director" type="text" title="Please enter only ONE if there is more than one director" required /><br />
+        <label asp-for="Director">Director</label><br /> 
+        <input asp-for="Director" type="text" title="Please enter director(s) name(s)" /><br />
         
         <br /><br />
         <label asp-for="Rating">Rating</label><br />
-        <select asp-for="Rating" id="rating" name="rating" required>
+        <select asp-for="Rating" id="rating" name="rating" >
             <option value="G">G</option>
             <option value="PG">PG</option>
             <option value="PG-13">PG-13</option>
@@ -56,7 +55,7 @@
 
         <br /><br />
         <label asp-for="Edited">Edited</label><br />
-        <select asp-for="Edited" id="edited" name="edited">
+        <select asp-for="Edited" id="edited" name="edited" required >
             <option value="true">Yes</option>
             <option value="false">No</option>
         </select><br />
@@ -68,12 +67,21 @@
         <span asp-validation-for="LentTo" class="text-danger"></span>
 
         <br /><br />
-        <label asp-for="CopiedToPlex">Notes</label><br />  <!--Notes should be limited to 25 characters. (#notcoveredinthevideos)-->
-        <input asp-for="CopiedToPlex" type="text" /><br />
+        <label asp-for="CopiedToPlex">Copied to Plex</label><br />
+        <select asp-for="CopiedToPlex" id="CopiedToPlex" name="CopiedToPlex" required>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select><br />
         <span asp-validation-for="CopiedToPlex" class="text-danger"></span>
+
+        <br /><br />
+        <label asp-for="Notes">Notes</label><br />  <!--Notes should be limited to 25 characters.-->
+        <input asp-for="Notes" type="text" /><br />
+        <span asp-validation-for="Notes" class="text-danger"></span>
 
         <br /><br />
 
         <button type="submit">Submit Entry</button>
+
     </form>
 </div>

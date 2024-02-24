@@ -12,6 +12,28 @@ html {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+.btn-salmon {
+    background-color: salmon; /* Salmon color for the button */
+    color: #fff; /* White text color */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s ease; /* Add smooth transition effect */
+}
+
+    .btn-salmon:hover {
+        background-color: lightsalmon;
+    }
+
+.btn-edit {
+    background-color: tan; /* Salmon color for the button */
+    color: #fff; /* White text color */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s ease; /* Add smooth transition effect */
+}
+
+    .btn-edit:hover {
+        background-color: lightgoldenrodyellow;
+    }
+
 html {
     position: relative;
     min-height: 100%;
@@ -62,4 +84,23 @@ h2 {
 
 p {
     font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+}
+
+.tr-header {
+    background-color:lightsalmon;
+    border-color: white;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.nav-item {
+    margin-right: 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight:bold;
+}
+
+.nav-item:hover {
+    background-color: #dc725e;
+    border: none; /* Remove default border */
+    border-radius: 8px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Add smooth transition effect */
 }

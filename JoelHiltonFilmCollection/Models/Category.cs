@@ -2,6 +2,7 @@
 
 namespace Mission06_MadHutchings.Models
 {
+    // meet this friendly subtable... created the key and the other columns for it
     public class Category
     {
         [Key]

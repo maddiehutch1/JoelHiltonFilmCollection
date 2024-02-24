@@ -1,13 +1,14 @@
 ﻿@{
     ViewData["Title"] = "Movie Data";
+    var categories = ViewBag.Categories as List<Category>;
 }
-
+<!-- call in the ViewBag above to use it and also call in the MovieEntry model-->
 @model List<MovieEntry>
 <h1>Check Out These Recommendations!</h1>
 
 <table class ="table table-bordered">
     <thead class="fw-bold">
-        <tr>
+        <tr class="tr-header">
             <td>Category</td>
             <td>Title</td>
             <td>Year</td>
@@ -20,21 +21,23 @@
         </tr>
     </thead>
     <tbody>
+        <!--for loop that runs through the model and calls the columns from that model-->
         @foreach (var movie in Model)
         {
              <tr>
-                <td>@movie.Category</td>
+                <td>@movie.Category?.CategoryName</td> <!-- indicate that subtable column is not required -->
                 <td>@movie.Title</td>
                 <td>@movie.Year</td>
                 <td>@movie.Director</td>
                 <td>@movie.Rating</td>
-                <td>@movie.Edited</td>
+                <td>@(movie.Edited ? "Yes" : "No")</td> <!-- changes true/false to yes/no -->
                 <td>@movie.LentTo</td>
-                <td>@movie.CopiedToPlex</td>
+                <td>@(movie.CopiedToPlex ? "Yes" : "No")</td>
                 <td>@movie.Notes</td>
 
-                <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@movie.MovieId">Edit</a></td>
-                <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@movie.MovieId">Delete</a></td>
+                <!--the fancy stuff that links the buttons to perform certain tasks - delete and edits-->
+                <td><a class="btn btn-edit" asp-controller="Home" asp-action="Edit" asp-route-id="@movie.MovieId">Edit</a></td>
+                <td><a class="btn btn-salmon" asp-controller="Home" asp-action="Delete" asp-route-id="@movie.MovieId">Delete</a></td>
             </tr>  
         }
         
